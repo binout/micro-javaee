@@ -35,6 +35,7 @@
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>7.0</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -60,6 +61,7 @@
                     <groupId>org.wildfly.swarm</groupId>
                     <artifactId>wildfly-swarm-weld-jaxrs</artifactId>
                     <version>${wildfly-swarm.version}</version>
+                    <scope>provided</scope>
                 </dependency>
             </dependencies>
             <build>
@@ -92,7 +94,7 @@
                     <groupId>fish.payara.extras</groupId>
                     <artifactId>payara-micro</artifactId>
                     <version>${payara-micro.version}</version>
-                    <type>jar</type>
+                    <scope>provided</scope>
                 </dependency>
             </dependencies>
             <build>
