@@ -1,0 +1,74 @@
+= micro-javaee
+
+This project compares different deployment configuration of JavaEE micro-service.
+
+== Prerequesites
+
+* JDK 8
+* Maven 3
+
+== WAR deployment
+
+The application is packaged as a war.
+
+[source]
+----
+mvn wildfly:run
+----
+
+Wildfly distribution is downloaded and unzipped in target directory.
+The application is packaged as a war and deploy to Wildfly.
+
+== Wildfly Swarm
+
+More information : http://wildfly.org/swarm/
+
+[source]
+----
+mvn clean package -Pswarm
+----
+
+The application is packaged as a `fat` jar with a some wildfly modules embedded : `micro-javaee-swarm.jar`.
+
+You can start the application with :
+
+[source]
+----
+java -jar target/micro-javaee-swarm.jar
+----
+
+== Payara Micro
+
+More information : http://www.payara.co.uk/introducing_payara_micro
+
+[source]
+----
+mvn clean package -Ppayara
+----
+
+The application is packaged as a war. Payara micro is downloaded and put in target directory.
+
+You can start the application with Payara micro as bootstrap :
+
+[source]
+----
+java -jar target/payara-micro.jar --deploy target/micro-javaee.war
+----
+
+== TomEE Embedded
+
+More information : https://rmannibucau.wordpress.com/2014/03/24/java-jar-my-app-in-tomee-jar/
+
+[source]
+----
+mvn clean package tomee:exec -Ptomee
+----
+
+The application is packaged as an executable jar. At startup, TomEE is unpacked just near the jar.
+
+You can start the application with :
+
+[source]
+----
+java -jar target/micro-javaee-exec.jar
+----
