@@ -28,6 +28,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <failOnMissingWebXml>false</failOnMissingWebXml>
+        <name>wildfly</name>
     </properties>
 
     <dependencies>
@@ -41,6 +42,12 @@
 
     <build>
         <finalName>${project.artifactId}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
@@ -54,6 +61,7 @@
         <profile>
             <id>swarm</id>
             <properties>
+                <name>swarm</name>
                 <wildfly-swarm.version>1.0.0.Alpha3</wildfly-swarm.version>
             </properties>
             <dependencies>
@@ -87,6 +95,7 @@
         <profile>
             <id>payara</id>
             <properties>
+                <name>payara</name>
                 <payara-micro.version>4.1.152.1</payara-micro.version>
             </properties>
             <dependencies>
@@ -129,6 +138,7 @@
         <profile>
             <id>tomee</id>
             <properties>
+                <name>tomee</name>
                 <tomee.version>1.7.1</tomee.version>
             </properties>
             <build>

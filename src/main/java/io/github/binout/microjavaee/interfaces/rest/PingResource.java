@@ -17,12 +17,23 @@ package io.github.binout.microjavaee.interfaces.rest;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 @Path("ping")
 public class PingResource {
 
     @GET
-    public String ping() {
-        return "pong";
+    @Produces("image/png")
+    public InputStream ping() throws IOException {
+        Properties properties = new Properties();
+        properties.load(resource("config.properties"));
+        return resource(properties.getProperty("name") + ".png");
+    }
+
+    private InputStream resource(String name) {
+        return Thread.currentThread().getContextClassLoader().getResourceAsStream(name);
     }
 }
