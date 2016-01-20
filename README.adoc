@@ -73,12 +73,30 @@ You can start the application with :
 java -jar target/micro-javaee-exec.jar
 ----
 
+== KumuluzEE
+
+More information : https://ee.kumuluz.com/
+
+[source]
+----
+mvn clean package -Pkumuluzee
+----
+
+The dependencies are copied into target/dependency.
+
+You can start the application with :
+
+[source]
+----
+CONTEXT_PATH=/micro-javaee java -cp target/classes:target/dependency/* com.kumuluz.ee.EeApplication
+----
+
 == Comparison
 
 [format="csv", options="header"]
 |===
-,Wildfly,Swarm,Payara Micro,TomEE Embedded
-Packaging, war + application server, jar, war + jar, jar
-Size, 10 Ko + 159 Mo, 83 Mo, 10 Ko + 57 Mo, 44 Mo
-Startup time,7s,4s,9s,2s
+,Wildfly,Swarm,Payara Micro,TomEE Embedded, KumuluzEE
+Packaging, war + application server, jar, war + jar, jar, classes + target/dependency/
+Size, 10 Ko + 159 Mo, 83 Mo, 10 Ko + 57 Mo, 44 Mo, 15 Mo
+Startup time,7s,4s,9s,2s,1s
 |===

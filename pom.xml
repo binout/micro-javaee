@@ -156,6 +156,57 @@
                 </plugins>
             </build>
         </profile>
+        <profile>
+            <id>kumuluzee</id>
+            <properties>
+                <name>kumuluzee</name>
+                <kumuluzee.version>1.0.0-alpha.1</kumuluzee.version>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>com.kumuluz.ee</groupId>
+                    <artifactId>kumuluzee-core</artifactId>
+                    <version>${kumuluzee.version}</version>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.kumuluz.ee</groupId>
+                    <artifactId>kumuluzee-servlet-jetty</artifactId>
+                    <version>${kumuluzee.version}</version>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.kumuluz.ee</groupId>
+                    <artifactId>kumuluzee-cdi</artifactId>
+                    <version>${kumuluzee.version}</version>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.kumuluz.ee</groupId>
+                    <artifactId>kumuluzee-jax-rs</artifactId>
+                    <version>${kumuluzee.version}</version>
+                    <scope>provided</scope>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <version>2.10</version>
+                        <executions>
+                            <execution>
+                                <id>copy-dependencies</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>copy-dependencies</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 
 </project>
